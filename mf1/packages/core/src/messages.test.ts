@@ -531,6 +531,32 @@ const testCases = {
     {
       src: '{N} is almost {N, number, {type}}',
       exp: [[{ N: 3.14, type: 'integer' }, '3.14 is almost 3']]
+    },
+    {
+      locale: 'ja',
+      options: { currency: 'JPY' },
+      src: 'The total is {V, number, currency}.',
+      exp: [[{ V: 5.55 }, 'The total is \uFFE56.']]
+    },
+    {
+      options: { currency: 'JPY' },
+      src: 'The total is {V, number, currency:JPY}.',
+      exp: [[{ V: 5.55 }, 'The total is \xA56.']]
+    },
+    {
+      options: { currency: 'JPY' },
+      src: 'The total is {V, number, {type}}.',
+      exp: [[{ V: 5.55, type: 'currency' }, 'The total is \xA56.']]
+    },
+    {
+      options: { currency: 'KWD' },
+      src: 'The total is {V, number, currency}.',
+      exp: [[{ V: 5.555 }, /5\.555\.$/]]
+    },
+    {
+      options: { currency: 'USD' },
+      src: 'The total is {V, number, currency}.',
+      exp: [[{ V: 5.555 }, /5\.56\.$/]]
     }
   ],
 
