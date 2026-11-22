@@ -285,8 +285,8 @@ function collectArgNames(tokens: AST.Token[], names: Set<string>) {
       for (const { tokens: caseTokens } of token.cases) {
         collectArgNames(caseTokens, names);
       }
-    } else if (token.type === 'function' && Array.isArray(token.params)) {
-      collectArgNames(token.params, names);
+    } else if (token.type === 'function' && Array.isArray(token.param)) {
+      collectArgNames(token.param, names);
     }
   }
 }
